@@ -81,13 +81,33 @@ $env:PYTHONPATH = "src"
 python -m unittest discover -s tests -v
 ```
 
-## TRUSTRAIL SOC frontend (Phase 2)
+## Phase 1 backend
 
-The React dashboard consumes the FastAPI `/api` contracts defined in `backend/app/main.py`.
-The included demo API reads the repository's synthetic graph fixture; it does not contain
-real telemetry or execute containment actions.
+The modular FastAPI backend integrates the existing Neo4j graph, Member 4
+inference/risk-scoring modules, and normalized graph data. It does not execute
+real containment actions.
 
-Install and start the frontend:
+From the repository root in PowerShell:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r backend\requirements.txt
+Copy-Item backend\.env.example .env
+# Set the Neo4j credentials and CORS_ORIGINS in .env before starting.
+python -m uvicorn backend.app.main:app --reload
+```
+
+The API is documented at `http://127.0.0.1:8000/docs`; readiness is available
+at `http://127.0.0.1:8000/api/health`. Neo4j-backed endpoints return an explicit
+service-unavailable response until database credentials are configured.
+See [docs/backend_api.md](docs/backend_api.md) for routes, data limitations,
+and test commands.
+
+## Phase 2 frontend
+
+The React/Vite SOC prototype uses the `/api` endpoints from the modular backend.
+Configure Neo4j as described above, then start the frontend in a second terminal:
 
 ```powershell
 cd frontend
@@ -95,20 +115,7 @@ npm install
 npm run dev
 ```
 
-In another terminal, start the demo API:
-
-```powershell
-python -m pip install -r backend\requirements.txt
-python -m uvicorn backend.app.main:app --reload --host 127.0.0.1 --port 8000
-```
-
-Open `http://localhost:5173`. FastAPI documentation is available at
-`http://127.0.0.1:8000/docs`.
-
-The prototype includes an interactive asset graph with relationship explanations,
-related synthetic detections, and Analyst/Executive/IT Operator reading views.
-The Command Center shows a clickable graph preview; help, activity notifications,
-and the analyst profile menu are available from the top bar. Persona choices
-change presentation only and do not provide authorization or access control.
-Incident status changes are intentionally disabled until authentication and
-server-side authorization are implemented.
+Open `http://localhost:5173`. The UI uses synthetic/demo-oriented labels and is
+not a source of production telemetry. Persona views affect presentation only;
+they are not access controls. Incident status changes remain disabled until
+authentication and server-side authorization are implemented.

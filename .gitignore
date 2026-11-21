@@ -9,6 +9,9 @@ data/intermediate/*
 data/processed/*
 data/reference/*
 data/demo-run/
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
 !data/raw/README.md
 !data/intermediate/README.md
 !data/processed/README.md

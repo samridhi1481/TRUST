@@ -1,5 +1,6 @@
 {
   "counts": {
+<<<<<<< HEAD
     "duplicates_skipped": 0,
     "entities": 18,
     "event_trace_relationships": 51,
@@ -33,6 +34,25 @@
       "size_bytes": 1153
     }
   },
+=======
+    "domain_relationships": 17,
+    "duplicates_skipped": 0,
+    "entities": 18,
+    "evidence_records": 17,
+    "invalid_records": 0,
+    "records_accepted": 17,
+    "records_read": 17,
+    "records_rejected": 0,
+    "relationships": 68,
+    "relationships_seen": 68,
+    "timestamps_unresolved": 0,
+    "traceability_relationships": 51
+  },
+  "dataset_id": "trustrail-member2-synthetic-v1",
+  "evidence_status": "observed",
+  "is_synthetic": true,
+  "license": "project-generated",
+>>>>>>> eb87fa0 (neo4j)
   "outputs": [
     "entities.jsonl",
     "relationships.jsonl",
@@ -41,10 +61,19 @@
     "rejected.jsonl",
     "metadata.json"
   ],
+<<<<<<< HEAD
   "source_systems": [
     "TRUSTRAIL_SYNTHETIC_SIMULATOR"
   ],
   "started_at": "2026-11-20T19:16:39Z",
   "transform_version": "0.2.0",
+=======
+  "source_file": "member2-fixture.jsonl",
+  "source_format": "jsonl",
+  "source_system": "trustrail_synthetic_generator",
+  "source_url": null,
+  "source_version": "1",
+  "transform_version": "0.1.0",
+>>>>>>> eb87fa0 (neo4j)
   "warning_counts": {}
 }

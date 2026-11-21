@@ -81,7 +81,7 @@ export default function Containment() {
               <div className="panel p-5">
                 <h2 className="font-semibold">Analyst recommendation</h2>
                 <p className="mt-2 text-sm leading-6 text-slate-300">{result.recommendation || 'No recommendation returned by the backend.'}</p>
-                {result.removed_relationships?.length > 0 && <div className="mt-4 text-xs text-slate-500">{result.removed_relationships.length} graph relationship(s) removed in the simulation.</div>}
+                {result.connectivity_removed > 0 && <div className="mt-4 text-xs text-slate-500">{result.connectivity_removed} modeled connection(s) removed in the simulation.</div>}
               </div>
             </>
           )}

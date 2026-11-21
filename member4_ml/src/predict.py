@@ -27,14 +27,24 @@ import joblib
 import numpy as np
 import pandas as pd
 
-from preprocessing import (
-    build_preprocessor,
-    fit_preprocessor,
-    transform_preprocessor,
-    get_feature_names,
-    TARGET_BINARY,
-)
-from explainability import explain_prediction as _explain_prediction
+if __package__:
+    from .preprocessing import (
+        build_preprocessor,
+        fit_preprocessor,
+        transform_preprocessor,
+        get_feature_names,
+        TARGET_BINARY,
+    )
+    from .explainability import explain_prediction as _explain_prediction
+else:
+    from preprocessing import (
+        build_preprocessor,
+        fit_preprocessor,
+        transform_preprocessor,
+        get_feature_names,
+        TARGET_BINARY,
+    )
+    from explainability import explain_prediction as _explain_prediction
 
 
 # ---------------------------------------------------------------------------

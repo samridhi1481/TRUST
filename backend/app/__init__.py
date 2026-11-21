@@ -1,1 +1,1 @@
-# TRUSTRAIL API package
+"""TRUSTRAIL AI FastAPI backend."""
